@@ -31,6 +31,19 @@ namespace TestLottery.LotteryTest
       return participants[0];
     }
 
+    public int GetLotteryWinnerAlt(int participantsCount)
+    {
+      var participants = Enumerable.Range(1, participantsCount).ToList();
+      var startIndex = 0;
+
+      var RemovedByOneRevolve = (int start, int step, int participantsCount) => { return (participantsCount + start) / Step; };
+
+      for ( var ToDelete = RemovedByOneRevolve(startIndex, Step, participants.Count); ToDelete > 0; ToDelete = participants.Count / Step)
+      {
+        participants.RemoveAll()
+      }
+    }
+
     public StringBuilder MakeSeveralLotteries(List<int> lotteriesParticipants)
     {
       var result = new StringBuilder();
